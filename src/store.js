@@ -19,12 +19,19 @@ export const fetchCoins = createAsyncThunk("coins/fetchCoins", async () => {
   }));
 });
 
-export const chartData = createAsyncThunk("detail/chartData", async (id) => {
-  const res = await axios.get(
-    `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=max`
-  );
-  console.log(res.data);
-});
+export const fetchChartData = createAsyncThunk(
+  "detail/fetchChartData",
+  async (id) => {
+    const res = await axios.get(
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=max`
+    );
+    console.log(res.data);
+    return res.data.prices.map((p) => ({
+      timestamp: new Date(p[0]).toLocaleDateString("en-US"),
+      price: p[1],
+    }));
+  }
+);
 
 //slice for managing coins state
 const coinSlice = createSlice({
@@ -55,13 +62,13 @@ const detailSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(chartData.pending, (state, action) => {
+    builder.addCase(fetchChartData.pending, (state, action) => {
       state.error = null;
     });
-    builder.addCase(chartData.fulfilled, (state, action) => {
+    builder.addCase(fetchChartData.fulfilled, (state, action) => {
       state.chartData = action.payload;
     });
-    builder.addCase(chartData.rejected, (state, action) => {
+    builder.addCase(fetchChartData.rejected, (state, action) => {
       state.error = action.error.message;
     });
   },
