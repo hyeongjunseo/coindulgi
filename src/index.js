@@ -8,6 +8,7 @@ import store from "./store";
 import Home from "./pages/Home";
 import Trend from "./pages/Trend";
 import Detail from "./pages/Detail";
+import Event from "./pages/Event";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +17,8 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trend" element={<Trend />} />
-        <Route path="/coins/:id" element={<Detail />}></Route>
+        <Route path="/coins/:id" element={<Detail />} />
+        <Route path="/event" element={<Event />} />
       </Routes>
     </BrowserRouter>
   </Provider>
