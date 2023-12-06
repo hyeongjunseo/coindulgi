@@ -33,6 +33,27 @@ export const fetchChartData = createAsyncThunk(
   }
 );
 
+export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  const year = yesterday.getFullYear();
+  const month = String(yesterday.getMonth() + 1).padStart(2, "0");
+  const day = String(yesterday.getDate()).padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log(formattedDate);
+  const res = await axios.get(
+    `https://newsapi.org/v2/everything?q=cryptocurrency&from=${formattedDate}&sortBy=popularity&apiKey=185b683ecedc46ea958c0b39242e7fb6`
+  );
+  console.log(res.data);
+  return res.data.articles.map((article) => ({
+    title: article.title,
+    url: article.url,
+    image: article.urlToImage,
+  }));
+});
+
 //slice for managing coins state
 const coinSlice = createSlice({
   name: "coins",
@@ -74,10 +95,31 @@ const detailSlice = createSlice({
   },
 });
 
+const newsSlice = createSlice({
+  name: "news",
+  initialState: {
+    articles: [],
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchNews.pending, (state, action) => {
+      state.error = null;
+    });
+    builder.addCase(fetchNews.fulfilled, (state, action) => {
+      state.articles = action.payload;
+    });
+    builder.addCase(fetchNews.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
+  },
+});
+
 //configure and export the store
 export default configureStore({
   reducer: {
     coins: coinSlice.reducer,
     details: detailSlice.reducer,
+    news: newsSlice.reducer,
   },
 });
