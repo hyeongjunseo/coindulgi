@@ -10,6 +10,7 @@ import Trend from "./pages/Trend";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
 import News from "./pages/News";
+import Risk from "./pages/Risk";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         <Route path="/coins/:id" element={<Detail />} />
         <Route path="/event" element={<Event />} />
         <Route path="/news" element={<News />} />
+        <Route path="/risk" element={<Risk />} />
       </Routes>
     </BrowserRouter>
   </Provider>
