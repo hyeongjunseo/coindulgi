@@ -1,7 +1,6 @@
 import React, { PureComponent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
 import { fetchChartData } from "../store";
 import {
   AreaChart,
@@ -12,6 +11,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
+import Header from "../components/Header/Header";
 
 export default function Show() {
   const dispatch = useDispatch();

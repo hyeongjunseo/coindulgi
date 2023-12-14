@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 
 export default function Risk() {
   const [tradingBalance, setTradingBalance] = useState(100000);

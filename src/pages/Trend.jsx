@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCoins } from "../store";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import { Link } from "react-router-dom";
 
 export default function Trend() {
