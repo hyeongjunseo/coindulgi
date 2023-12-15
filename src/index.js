@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 import store from "./store";
 
-import Home from "./pages/Home";
+import Home from "./components/Home/Home";
 import Trend from "./pages/Trend";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
