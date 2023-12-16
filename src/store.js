@@ -13,11 +13,25 @@ export const fetchCoins = createAsyncThunk("coins/fetchCoins", async () => {
   console.log(res.data);
   return res.data.coins.map((coin) => ({
     id: coin.item.id,
-    image: coin.item.large,
     name: coin.item.name,
     price_btc: coin.item.price_btc,
+    image: coin.item.large,
   }));
 });
+
+export const searchCoins = createAsyncThunk(
+  "coins/searchCoins",
+  async (query) => {
+    const res = await axios.get(
+      `https://api.coingecko.com/api/v3/search?query=${query}`
+    );
+    return res.data.coins.map((coin) => ({
+      id: coin.id,
+      name: coin.name,
+      image: coin.thumb,
+    }));
+  }
+);
 
 export const fetchChartData = createAsyncThunk(
   "detail/fetchChartData",
@@ -75,6 +89,26 @@ const coinSlice = createSlice({
   },
 });
 
+const searchCoinSlice = createSlice({
+  name: "searchCoins",
+  initialState: {
+    data: [],
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(searchCoins.pending, (state, action) => {
+      state.error = null;
+    });
+    builder.addCase(searchCoins.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
+    builder.addCase(searchCoins.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
+  },
+});
+
 const detailSlice = createSlice({
   name: "details",
   initialState: {
@@ -119,6 +153,7 @@ const newsSlice = createSlice({
 export default configureStore({
   reducer: {
     coins: coinSlice.reducer,
+    searchCoins: searchCoinSlice.reducer,
     details: detailSlice.reducer,
     news: newsSlice.reducer,
   },
