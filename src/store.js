@@ -10,11 +10,16 @@ export const fetchCoins = createAsyncThunk("coins/fetchCoins", async () => {
   const res = await axios.get(
     "https://api.coingecko.com/api/v3/search/trending"
   );
+  const usdRes = await axios.get(
+    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+  );
   console.log(res.data);
+  console.log(usdRes.data.bitcoin.usd);
   return res.data.coins.map((coin) => ({
     id: coin.item.id,
     name: coin.item.name,
-    price_btc: coin.item.price_btc,
+    price_btc: coin.item.price_btc.toFixed(10),
+    price_usd: (coin.item.price_btc * usdRes.data.bitcoin.usd).toFixed(6),
     image: coin.item.large,
   }));
 });
