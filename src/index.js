@@ -7,7 +7,7 @@ import store from "./store";
 
 import Home from "./components/Home/Home";
 import Trend from "./components/Trend/Trend";
-import Detail from "./pages/Detail";
+import Detail from "./components/Trend/Detail/Detail";
 import Event from "./pages/Event";
 import News from "./pages/News";
 import Risk from "./pages/Risk";

@@ -14,7 +14,7 @@ export default function Header() {
               <Link className="nav-logo-link" to="/">
                 <img
                   className="nav-logo"
-                  src="dulgi.png"
+                  src="/dulgi.png"
                   alt="Coin Dulgi Logo"
                 />
               </Link>
@@ -45,7 +45,7 @@ export default function Header() {
               <Link className="external-link" to="https://www.binance.com/en">
                 <img
                   className="external-logo"
-                  src="binance.png"
+                  src="/binance.png"
                   alt="Binance logo"
                 />
               </Link>
