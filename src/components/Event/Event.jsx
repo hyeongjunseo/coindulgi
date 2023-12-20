@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 
 import "../../styles/global.scss";
 import "./Event.scss";
+import { Link } from "react-router-dom";
 
 export default function Event() {
   const [countdown, setCountdown] = useState({
@@ -11,14 +12,6 @@ export default function Event() {
     minutes: 0,
     seconds: 0,
   });
-  const months = [
-    "Jan 2024",
-    "Feb 2024",
-    "Mar 2024",
-    "Apr 2024",
-    "May 2024",
-    "Jun 2024",
-  ];
 
   const events = [
     {
@@ -156,14 +149,20 @@ export default function Event() {
       <div className="event-content">
         <div className="event-sidebar">
           <ul>
-            {months.map((month, i) => (
-              <li key={i}>{month}</li>
+            {events.map((eventMonth) => (
+              <li key={eventMonth.month}>
+                <a href={`#${eventMonth.month}`}>{eventMonth.month}</a>
+              </li>
             ))}
           </ul>
         </div>
         <div className="event-list">
           {events.map((eventMonth) => (
-            <div key={eventMonth.month} className="event-section">
+            <div
+              key={eventMonth.month}
+              id={eventMonth.month}
+              className="event-section"
+            >
               <div className="event-section-header">
                 <h3>{eventMonth.month}</h3>
               </div>
