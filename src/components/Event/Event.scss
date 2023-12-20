@@ -9,8 +9,7 @@
   color: white;
   padding: 15px 30px;
   margin: 0 auto;
-  margin-bottom: 40px;
-  margin-top: -10px;
+  margin-bottom: 70px;
 }
 
 .event-header-title {
@@ -35,21 +34,45 @@
 
 .event-content {
   display: flex;
-  margin: 0 auto;
 }
 
 .event-sidebar {
   width: 150px;
+  height: 100%;
   position: sticky;
-  background-color: #babdc0;
+  top: 40px;
+  border: 2px dashed #2e3747;
   padding: 18px 16px;
-  margin-right: 10px;
+  margin-left: 40px;
   ul {
-    margin-top: 20px;
+    margin-top: 16px;
     list-style: none;
     text-align: center;
     li {
       margin-bottom: 16px;
     }
+  }
+}
+
+.event-list {
+  margin-left: 90px;
+}
+
+.event-section {
+  border-bottom: medium dashed #2e3747;
+  margin-bottom: 40px;
+}
+
+.event-section-header {
+  font-family: "pixelOperator";
+  font-size: 45px;
+  margin-bottom: 40px;
+}
+
+.event-section-body {
+  margin-bottom: 40px;
+  .event-section-title {
+    font-size: 25px;
+    margin-bottom: 20px;
   }
 }

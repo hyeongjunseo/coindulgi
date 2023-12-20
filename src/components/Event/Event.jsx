@@ -162,32 +162,21 @@ export default function Event() {
           </ul>
         </div>
         <div className="event-list">
-          <div className="event-section">
-            <div className="event-section-header">
-              <h3>Jan 2024</h3>
+          {events.map((eventMonth) => (
+            <div key={eventMonth.month} className="event-section">
+              <div className="event-section-header">
+                <h3>{eventMonth.month}</h3>
+              </div>
+              {eventMonth.events.map((event, i) => (
+                <div className="event-section-body">
+                  <h4 className="event-section-title">{event.title}</h4>
+                  <p className="event-section-description">
+                    {event.description}
+                  </p>
+                </div>
+              ))}
             </div>
-            <div className="event-section-body">
-              <h4 className="event-section-title">Spot BTC ETF</h4>
-              <p className="event-section-description">
-                Spot BTC ETF approvals ranges between January 5 and 10
-              </p>
-            </div>
-            <div className="event-section-body">
-              <h4 className="event-section-title">Spot BTC ETF</h4>
-              <p className="event-section-description">
-                Spot BTC ETF approvals ranges between January 5 and 10
-              </p>
-            </div>
-          </div>
-          <div className="event-section">
-            <div className="event-section-header">
-              <h3>Feb 2024</h3>
-            </div>
-            <div className="event-section-body">
-              <h4 className="event-section-title">No events</h4>
-              <p className="event-section-dsecription">No events</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
