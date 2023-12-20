@@ -32,3 +32,24 @@
   font-weight: 700;
   margin-right: 1.8px;
 }
+
+.event-content {
+  display: flex;
+  margin: 0 auto;
+}
+
+.event-sidebar {
+  width: 150px;
+  position: sticky;
+  background-color: #babdc0;
+  padding: 18px 16px;
+  margin-right: 10px;
+  ul {
+    margin-top: 20px;
+    list-style: none;
+    text-align: center;
+    li {
+      margin-bottom: 16px;
+    }
+  }
+}

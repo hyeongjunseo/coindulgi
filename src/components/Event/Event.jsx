@@ -11,6 +11,91 @@ export default function Event() {
     minutes: 0,
     seconds: 0,
   });
+  const months = [
+    "Jan 2024",
+    "Feb 2024",
+    "Mar 2024",
+    "Apr 2024",
+    "May 2024",
+    "Jun 2024",
+  ];
+
+  const events = [
+    {
+      month: "Jan 2024",
+      events: [
+        {
+          title: "Spot BTC ETF",
+          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Feb 2024",
+      events: [
+        {
+          title: "Spot BTC ETF",
+          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Mar 2024",
+      events: [
+        {
+          title: "Spot BTC ETF",
+          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Apr 2024",
+      events: [
+        {
+          title: "Bitcoin halving",
+          description: "The next BTC halving is likely to occur",
+        },
+      ],
+    },
+    {
+      month: "May 2024",
+      events: [
+        {
+          title: "Spot BTC ETF",
+          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Jun 2024",
+      events: [
+        {
+          title: "Spot BTC ETF",
+          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+  ];
 
   useEffect(() => {
     const targetDate = new Date("April 3, 2024 16:38:43Z").getTime();
@@ -71,16 +156,21 @@ export default function Event() {
       <div className="event-content">
         <div className="event-sidebar">
           <ul>
-            <li>Jan 2024</li>
-            <li>Feb 2024</li>
-            <li>Mar 2024</li>
-            <li>Apr 2024</li>
+            {months.map((month, i) => (
+              <li key={i}>{month}</li>
+            ))}
           </ul>
         </div>
         <div className="event-list">
           <div className="event-section">
             <div className="event-section-header">
               <h3>Jan 2024</h3>
+            </div>
+            <div className="event-section-body">
+              <h4 className="event-section-title">Spot BTC ETF</h4>
+              <p className="event-section-description">
+                Spot BTC ETF approvals ranges between January 5 and 10
+              </p>
             </div>
             <div className="event-section-body">
               <h4 className="event-section-title">Spot BTC ETF</h4>
