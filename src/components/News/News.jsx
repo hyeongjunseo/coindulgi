@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNews } from "../../store";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ export default function News() {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.news.articles);
   console.log(articles);
+  const [visibleArticles, setVisibleArticles] = useState(5);
 
   useEffect(() => {
     dispatch(fetchNews());
@@ -25,7 +26,7 @@ export default function News() {
           <h2>News</h2>
         </header>
         <div className="news-list">
-          {articles.map((article, i) => (
+          {articles.slice(0, visibleArticles).map((article, i) => (
             <Link to={article.url} key={i} className="news-item">
               <div className="article-image">
                 <img src={article.image} alt={article.title} />
@@ -36,6 +37,14 @@ export default function News() {
               </div>
             </Link>
           ))}
+          {visibleArticles < articles.length && (
+            <button
+              className="btn-load-more"
+              onClick={() => setVisibleArticles(visibleArticles + 5)}
+            >
+              <p>Load More</p>
+            </button>
+          )}
         </div>
       </div>
     </div>
