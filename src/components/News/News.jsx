@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNews } from "../store";
-
-import Header from "../components/Header/Header";
-
+import { fetchNews } from "../../store";
 import { Link } from "react-router-dom";
+
+import Header from "../Header/Header";
+
+import "../../styles/global.scss";
+import "./News.scss";
 
 export default function News() {
   const dispatch = useDispatch();
@@ -16,29 +18,23 @@ export default function News() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="page-container">
       <Header />
-      <div className="width">
+      <div className="width news-width">
         <header className="news-header">
           <h2>News</h2>
         </header>
         <div className="news-list">
           {articles.map((article, i) => (
-            <div key={i} className="news-item">
+            <Link to={article.url} key={i} className="news-item">
               <div className="article-image">
-                <img
-                  style={{ width: 100 }}
-                  src={article.image}
-                  alt={article.title}
-                />
+                <img src={article.image} alt={article.title} />
               </div>
               <div className="article-content">
                 <div className="article-title">{article.title}</div>
-                <a href={article.url}>
-                  <button>Read More</button>
-                </a>
+                <div className="article-description">{article.description}</div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

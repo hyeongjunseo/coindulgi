@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 
 import "../../styles/global.scss";
 import "./Event.scss";
-import { Link } from "react-router-dom";
 
 export default function Event() {
   const [countdown, setCountdown] = useState({

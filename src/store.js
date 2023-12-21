@@ -55,7 +55,7 @@ export const fetchChartData = createAsyncThunk(
 export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
   const today = new Date();
   const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setDate(yesterday.getDate() - 2);
 
   const year = yesterday.getFullYear();
   const month = String(yesterday.getMonth() + 1).padStart(2, "0");
@@ -68,6 +68,7 @@ export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
   console.log(res.data);
   return res.data.articles.map((article) => ({
     title: article.title,
+    description: article.description,
     url: article.url,
     image: article.urlToImage,
   }));

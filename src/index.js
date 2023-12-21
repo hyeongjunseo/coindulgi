@@ -9,7 +9,7 @@ import Home from "./components/Home/Home";
 import Trend from "./components/Trend/Trend";
 import Detail from "./components/Trend/Detail/Detail";
 import Event from "./components/Event/Event";
-import News from "./pages/News";
+import News from "./components/News/News";
 import Risk from "./pages/Risk";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

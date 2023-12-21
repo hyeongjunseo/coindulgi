@@ -46,7 +46,7 @@ export default function Risk() {
             <label htmlFor="entry">E/P</label>
             <input
               id="entry"
-              placeholder="14.9"
+              placeholder={entry}
               onChange={(e) => setEntry(e.target.value)}
               type="number"
             />
@@ -55,7 +55,7 @@ export default function Risk() {
             <label htmlFor="stop-loss">S/L</label>
             <input
               id="stop-loss"
-              placeholder="14.5"
+              placeholder={stopLoss}
               onChange={(e) => setStopLoss(e.target.value)}
               type="number"
             />
@@ -64,7 +64,7 @@ export default function Risk() {
             <label htmlFor="target">T/P</label>
             <input
               id="target"
-              placeholder="17.2"
+              placeholder={target}
               onChange={(e) => setTarget(e.target.value)}
               type="number"
             />

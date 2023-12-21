@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "pixelOperator";
+  src: url(../../assets/fonts/PixelOperator-Bold.ttf);
+}
+
+.news-width {
+  padding: 0 20px;
+}
+
+.news-header {
+  font-family: "pixelOperator";
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.news-item {
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  .article-image {
+    padding: 0 24px;
+  }
+  img {
+    width: 320px;
+    height: 170px;
+    border-radius: 8px;
+  }
+}
+
+.article-content {
+  .article-title {
+    font-size: 21px;
+    font-weight: 700;
+    padding: 0 16px;
+  }
+  .article-description {
+    font-size: 16px;
+    margin-top: 12px;
+    padding: 0 16px;
+  }
+}
