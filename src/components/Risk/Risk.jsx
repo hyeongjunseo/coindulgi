@@ -12,9 +12,15 @@ export default function Risk() {
   const [target, setTarget] = useState(17.2);
 
   const riskUSDT = (tradingBalance * riskPercent) / 100;
-  const rrr = (target - entry) / (entry - stopLoss);
+  const rrr = ((target - entry) / (entry - stopLoss)).toFixed(1);
   const invalidation = (entry - stopLoss) / entry;
-  const positionSize = (tradingBalance * riskPercent) / 100 / invalidation;
+  const positionSize = (
+    (tradingBalance * riskPercent) /
+    100 /
+    invalidation
+  ).toFixed(0);
+
+  const [isCalculated, setIsCalculasted] = useState(false);
 
   return (
     <div className="page-container">
@@ -74,18 +80,26 @@ export default function Risk() {
           </div>
         </div>
         <div>
-          <button className="calc-btn" onClick={(e) => e.preventDefault()}>
+          <button
+            className="calc-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsCalculasted(true);
+            }}
+          >
             Calculate
           </button>
         </div>
         <div className="calc-row">
           <div className="calc-res">
             <span>RRR</span>
-            <div className="RRR">{rrr}</div>
+            <div className="RRR">{isCalculated ? rrr : "---"}</div>
           </div>
           <div className="calc-res">
             <span>Position Size</span>
-            <div className="position-size">{positionSize}</div>
+            <div className="position-size">
+              {isCalculated ? positionSize : "---"}
+            </div>
           </div>
         </div>
       </form>

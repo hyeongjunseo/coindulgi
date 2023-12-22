@@ -43,20 +43,21 @@
   font-size: 28px;
   background-color: #2e3747;
   border: none;
-  margin: 15px auto 40px auto;
+  margin: 20px auto 40px auto;
   padding: 10px 20px 10px 20px;
 }
 
 .calc-res {
   text-align: center;
+  padding: 5px 10px;
   span {
     font-size: 18px;
     border-bottom: 1px dotted #2e3747;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
   }
   div {
-    font-size: 40px;
+    font-size: 60px;
     font-weight: 700;
   }
 }
