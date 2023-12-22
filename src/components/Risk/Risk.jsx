@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import Header from "../components/Header/Header";
+import Header from "../Header/Header";
+
+import "../../styles/global.scss";
+import "./Risk.scss";
 
 export default function Risk() {
   const [tradingBalance, setTradingBalance] = useState(100000);
@@ -14,20 +17,20 @@ export default function Risk() {
   const positionSize = (tradingBalance * riskPercent) / 100 / invalidation;
 
   return (
-    <div>
+    <div className="page-container">
       <Header />
       <form action="" className="calc-container">
-        <div className="calc-input">
-          <label htmlFor="trading-balance">Trading Balance $</label>
-          <input
-            id="trading-balance"
-            placeholder={tradingBalance}
-            onChange={(e) => setTradingBalance(e.target.value)}
-            type="number"
-          />
-        </div>
-        <div className="calc-input">
-          <div>
+        <div className="calc-row">
+          <div className="calc-input">
+            <label htmlFor="trading-balance">Trading Balance $</label>
+            <input
+              id="trading-balance"
+              placeholder={tradingBalance}
+              onChange={(e) => setTradingBalance(e.target.value)}
+              type="number"
+            />
+          </div>
+          <div className="calc-input">
             <label htmlFor="risk-percent">Risk %</label>
             <input
               id="risk-percent"
@@ -36,13 +39,13 @@ export default function Risk() {
               type="number"
             />
           </div>
-          <div>
+          <div className="calc-input">
             <label htmlFor="riskUsdt">Risk USDT</label>
             <input id="riskUsdt" value={riskUSDT} type="number" />
           </div>
         </div>
-        <div className="calc-input">
-          <div>
+        <div className="calc-row">
+          <div className="calc-input">
             <label htmlFor="entry">E/P</label>
             <input
               id="entry"
@@ -51,7 +54,7 @@ export default function Risk() {
               type="number"
             />
           </div>
-          <div>
+          <div className="calc-input">
             <label htmlFor="stop-loss">S/L</label>
             <input
               id="stop-loss"
@@ -60,7 +63,7 @@ export default function Risk() {
               type="number"
             />
           </div>
-          <div>
+          <div className="calc-input">
             <label htmlFor="target">T/P</label>
             <input
               id="target"
@@ -71,15 +74,17 @@ export default function Risk() {
           </div>
         </div>
         <div>
-          <button onClick={(e) => e.preventDefault()}>Calculate</button>
+          <button className="calc-btn" onClick={(e) => e.preventDefault()}>
+            Calculate
+          </button>
         </div>
-        <div>
+        <div className="calc-row">
           <div className="calc-res">
-            <div>RRR</div>
+            <span>RRR</span>
             <div className="RRR">{rrr}</div>
           </div>
           <div className="calc-res">
-            <div>Position Size</div>
+            <span>Position Size</span>
             <div className="position-size">{positionSize}</div>
           </div>
         </div>

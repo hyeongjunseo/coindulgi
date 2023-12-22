@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "pixelOperator";
+  src: url(../../assets/fonts/PixelOperator-Bold.ttf);
+}
+
+.calc-container {
+  width: 80%;
+  margin: 2px auto 0 auto;
+  padding: 0 60px;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.calc-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  input {
+    font-family: "Cousine", monospace;
+    width: 85%;
+    font-size: 20px;
+    padding: 16px 10px;
+    border: 2px solid rgba(25, 32, 46, 0.4);
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+}
+
+.calc-btn {
+  display: block;
+  font-family: "pixelOperator";
+  color: white;
+  font-size: 28px;
+  background-color: #2e3747;
+  border: none;
+  margin: 15px auto 40px auto;
+  padding: 10px 20px 10px 20px;
+}
+
+.calc-res {
+  text-align: center;
+  span {
+    font-size: 18px;
+    border-bottom: 1px dotted #2e3747;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  div {
+    font-size: 40px;
+    font-weight: 700;
+  }
+}

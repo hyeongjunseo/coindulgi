@@ -10,7 +10,7 @@ import Trend from "./components/Trend/Trend";
 import Detail from "./components/Trend/Detail/Detail";
 import Event from "./components/Event/Event";
 import News from "./components/News/News";
-import Risk from "./pages/Risk";
+import Risk from "./components/Risk/Risk";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
