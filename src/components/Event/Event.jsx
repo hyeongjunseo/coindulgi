@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import "../../styles/global.scss";
 import "./Event.scss";
+import PageHead from "../shared/PageHead";
 
 export default function Event() {
   const [countdown, setCountdown] = useState({
@@ -124,6 +125,7 @@ export default function Event() {
 
   return (
     <div className="page-container">
+      <PageHead title="Cryptocurrency Events Calendar - Stay Informed About Crypto | CoinDulgi" />
       <Header />
       <div className="event-header">
         <h1 className="event-header-title">BTC Halving</h1>

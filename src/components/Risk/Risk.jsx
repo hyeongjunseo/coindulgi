@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 
 import "../../styles/global.scss";
 import "./Risk.scss";
+import PageHead from "../shared/PageHead";
 
 export default function Risk() {
   const [tradingBalance, setTradingBalance] = useState(100000);
@@ -24,6 +25,7 @@ export default function Risk() {
 
   return (
     <div className="page-container">
+      <PageHead title="Effective Cryptocurrency Risk Management Strategies | CoinDulgi" />
       <Header />
       <form action="" className="calc-container">
         <div className="calc-row">

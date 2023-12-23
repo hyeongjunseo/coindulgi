@@ -16,6 +16,7 @@ import Header from "../../Header/Header";
 
 import "../../../styles/global.scss";
 import "./Detail.scss";
+import PageHead from "../../shared/PageHead";
 
 export default function Show() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ export default function Show() {
 
   return (
     <div className="page-container">
+      <PageHead
+        title={`Live Price Chart & Market Data for ${id} | CoinDulgi`}
+      />
       <Header />
       <div className="detail-title">
         <h2>{id}</h2>

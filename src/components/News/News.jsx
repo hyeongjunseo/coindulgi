@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 
 import "../../styles/global.scss";
 import "./News.scss";
+import PageHead from "../shared/PageHead";
 
 export default function News() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function News() {
 
   return (
     <div className="page-container">
+      <PageHead title="Latest Cryptocurrency News | CoinDulgi" />
       <Header />
       <div className="width news-width">
         <header className="news-header">

@@ -7,6 +7,7 @@ import { fetchCoins, searchCoins } from "../../store";
 
 import "../../styles/global.scss";
 import "./Trend.scss";
+import PageHead from "../shared/PageHead";
 
 export default function Trend() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export default function Trend() {
 
   return (
     <div className="page-container">
+      <PageHead title="Top Trending Cryptocurrencies Today | CoinDulgi" />
       <Header />
       <section className="trend-section">
         <input
