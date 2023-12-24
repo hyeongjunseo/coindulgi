@@ -6,6 +6,19 @@ import {
 import axios from "axios";
 
 // Async thunk for fetching coins
+
+export const fetchStats = createAsyncThunk("stats/fetchStats", async () => {
+  const res = await axios.get("https://api.coingecko.com/api/v3/global");
+  console.log(res);
+  const { total_market_cap, total_volume, market_cap_percentage } =
+    res.data.data;
+  return {
+    marketCap: total_market_cap.usd,
+    volume: total_volume.usd,
+    dominance: market_cap_percentage.btc.toFixed(1),
+  };
+});
+
 export const fetchCoins = createAsyncThunk("coins/fetchCoins", async () => {
   const res = await axios.get(
     "https://api.coingecko.com/api/v3/search/trending"
@@ -75,6 +88,27 @@ export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
 });
 
 //slice for managing coins state
+
+const statSlice = createSlice({
+  name: "stats",
+  initialState: {
+    data: {},
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchStats.pending, (state, action) => {
+      state.error = null;
+    });
+    builder.addCase(fetchStats.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
+    builder.addCase(fetchStats.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
+  },
+});
+
 const coinSlice = createSlice({
   name: "coins",
   initialState: {
@@ -158,6 +192,7 @@ const newsSlice = createSlice({
 //configure and export the store
 export default configureStore({
   reducer: {
+    stats: statSlice.reducer,
     coins: coinSlice.reducer,
     searchCoins: searchCoinSlice.reducer,
     details: detailSlice.reducer,

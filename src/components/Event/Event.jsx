@@ -125,7 +125,7 @@ export default function Event() {
 
   return (
     <div className="page-container">
-      <PageHead title="Cryptocurrency Events Calendar - Stay Informed About Crypto | CoinDulgi" />
+      <PageHead title="Cryptocurrency Events Calendar - Stay Informed About Crypto" />
       <Header />
       <div className="event-header">
         <h1 className="event-header-title">BTC Halving</h1>

@@ -25,7 +25,7 @@ export default function Risk() {
 
   return (
     <div className="page-container">
-      <PageHead title="Effective Cryptocurrency Risk Management Strategies | CoinDulgi" />
+      <PageHead title="Effective Cryptocurrency Risk Management Strategies" />
       <Header />
       <form action="" className="calc-container">
         <div className="calc-row">

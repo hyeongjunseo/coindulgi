@@ -2,17 +2,23 @@
   font-family: "pixelOperator";
   src: url(../../assets/fonts/PixelOperator-Bold.ttf);
 }
+@import url("https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap");
 
 .header {
   font-family: "pixelOperator";
-  font-size: 26px;
+  background-color: #ffffff;
+  font-size: 24px;
   line-height: 36px;
-  padding: 10px 15px;
-  margin: 15px 0 50px 0;
-  border-bottom: 1px solid #babdc0;
-  border-top: 1px solid #babdc0;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 10px 5px 10px 5px;
+  margin: 0 0 50px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header-stats {
+  font-family: "Cousine", monospace;
+  font-size: 12px;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .header-nav {
@@ -35,8 +41,8 @@
     transition: all 0.3s ease;
 
     &:hover {
-      color: #f0b90a;
-      border-bottom: 2px solid #f0b90a;
+      color: #babdc0;
+      border-bottom: 2px solid #babdc0;
     }
   }
 }
@@ -44,13 +50,13 @@
 .nav-logo-link {
   display: flex;
   img {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
   }
 }
 
 .nav-item-external {
-  margin-right: 20px;
+  margin-left: 22px;
 }
 
 .external-logo {

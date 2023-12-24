@@ -27,7 +27,7 @@ export default function Trend() {
 
   return (
     <div className="page-container">
-      <PageHead title="Top Trending Cryptocurrencies Today | CoinDulgi" />
+      <PageHead title="Top Trending Cryptocurrencies Today" />
       <Header />
       <section className="trend-section">
         <input

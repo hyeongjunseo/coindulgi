@@ -21,7 +21,7 @@ export default function News() {
 
   return (
     <div className="page-container">
-      <PageHead title="Latest Cryptocurrency News | CoinDulgi" />
+      <PageHead title="Latest Cryptocurrency News" />
       <Header />
       <div className="width news-width">
         <header className="news-header">

@@ -34,9 +34,7 @@ export default function Show() {
 
   return (
     <div className="page-container">
-      <PageHead
-        title={`Live Price Chart & Market Data for ${id} | CoinDulgi`}
-      />
+      <PageHead title={`Live Price Chart & Market Data for ${id}`} />
       <Header />
       <div className="detail-title">
         <h2>{id}</h2>
