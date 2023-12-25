@@ -10,12 +10,22 @@ import axios from "axios";
 export const fetchStats = createAsyncThunk("stats/fetchStats", async () => {
   const res = await axios.get("https://api.coingecko.com/api/v3/global");
   console.log(res);
-  const { total_market_cap, total_volume, market_cap_percentage } =
-    res.data.data;
+  const {
+    active_cryptocurrencies,
+    markets,
+    total_market_cap,
+    market_cap_change_percentage_24h_usd,
+    total_volume,
+    market_cap_percentage,
+  } = res.data.data;
   return {
+    coins: active_cryptocurrencies,
+    exchanges: markets,
     marketCap: total_market_cap.usd,
+    marketCap_percentage: market_cap_change_percentage_24h_usd.toFixed(1),
     volume: total_volume.usd,
-    dominance: market_cap_percentage.btc.toFixed(1),
+    dominance_btc: market_cap_percentage.btc.toFixed(1),
+    dominance_eth: market_cap_percentage.eth.toFixed(1),
   };
 });
 

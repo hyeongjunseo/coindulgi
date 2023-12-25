@@ -12,6 +12,17 @@ export default function Header() {
     return state.stats.data;
   });
   console.log(stats);
+  const formatNumber = (num) => {
+    if (num >= 1e12) {
+      return (num / 1e12).toFixed(3) + "T";
+    } else if (num >= 1e9) {
+      return (num / 1e9).toFixed(3) + "B";
+    } else if (num >= 1e6) {
+      return (num / 1e6).toFixed(3) + "M";
+    } else {
+      return num.toFixed(3);
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchStats());
@@ -21,23 +32,26 @@ export default function Header() {
     <header className="header">
       <div className="header-stats">
         <div className="stats-item">
-          <div className="stats-image">
-            <img
-              className="stats-image-btc"
-              src="/bitcoin.webp"
-              alt="bitcoin"
-            />
-          </div>
-          <div className="stats-title">BTC Market Cap</div>
-          <div className="stats-value">{stats.marketCap}</div>
+          Coins:
+          <span className="stats-value">{stats.coins}</span>
         </div>
         <div className="stats-item">
-          <div className="stats-title">Volume</div>
-          <div className="stats-value">{stats.volume}</div>
+          Exchanges:
+          <span className="stats-value">{stats.exchanges}</span>
         </div>
         <div className="stats-item">
-          <div className="stats-title">Dominance</div>
-          <div className="stats-value">{stats.dominance}%</div>
+          Market Cap:
+          <span className="stats-value">${formatNumber(stats.marketCap)}</span>
+          <span className="stats-value">{stats.marketCap_percentage}%</span>
+        </div>
+        <div className="stats-item">
+          24h Vol:
+          <span className="stats-value">${formatNumber(stats.volume)}</span>
+        </div>
+        <div className="stats-item">
+          Dominance:
+          <span className="stats-value">BTC {stats.dominance_btc}%</span>
+          <span className="stats-value">ETH {stats.dominance_eth}%</span>
         </div>
       </div>
       <nav className="header-nav">
