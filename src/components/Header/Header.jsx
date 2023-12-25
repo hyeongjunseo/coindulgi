@@ -13,6 +13,7 @@ export default function Header() {
   });
   console.log(stats);
   const formatNumber = (num) => {
+    if (!num) return "---";
     if (num >= 1e12) {
       return (num / 1e12).toFixed(3) + "T";
     } else if (num >= 1e9) {
@@ -32,7 +33,7 @@ export default function Header() {
     <header className="header">
       <div className="header-stats">
         <div className="stats-item">
-          Coins:
+          <span className="stats-label">Coins:</span>
           <span className="stats-value">{stats.coins}</span>
         </div>
         <div className="stats-item">
@@ -40,18 +41,23 @@ export default function Header() {
           <span className="stats-value">{stats.exchanges}</span>
         </div>
         <div className="stats-item">
-          Market Cap:
+          <span className="stats-label">Market Cap:</span>
           <span className="stats-value">${formatNumber(stats.marketCap)}</span>
-          <span className="stats-value">{stats.marketCap_percentage}%</span>
+          <span className="stats-value-percentage">
+            {stats.marketCap_percentage}%
+          </span>
         </div>
         <div className="stats-item">
-          24h Vol:
+          <span className="stats-label">24h Vol:</span>
           <span className="stats-value">${formatNumber(stats.volume)}</span>
         </div>
         <div className="stats-item">
           Dominance:
-          <span className="stats-value">BTC {stats.dominance_btc}%</span>
-          <span className="stats-value">ETH {stats.dominance_eth}%</span>
+          <span className="stats-label">BTC</span>
+          <span className="stats-value"> {stats.dominance_btc}%</span>
+          &nbsp;
+          <span className="stats-label">ETH</span>
+          <span className="stats-value"> {stats.dominance_eth}%</span>
         </div>
       </div>
       <nav className="header-nav">
