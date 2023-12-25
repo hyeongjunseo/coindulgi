@@ -24,6 +24,13 @@ export default function Header() {
       return num.toFixed(3);
     }
   };
+  const getPercentageStyle = (percentage) => {
+    if (percentage >= 0) {
+      return { color: "#22AB94" };
+    } else {
+      return { color: "#F23545" };
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchStats());
@@ -43,8 +50,14 @@ export default function Header() {
         <div className="stats-item">
           <span className="stats-label">Market Cap:</span>
           <span className="stats-value">${formatNumber(stats.marketCap)}</span>
-          <span className="stats-value-percentage">
-            {stats.marketCap_percentage}%
+          <span
+            className="stats-value-percentage"
+            style={getPercentageStyle(stats.marketCap_percentage)}
+          >
+            {stats.marketCap_percentage >= 0
+              ? `+${stats.marketCap_percentage}`
+              : `-${stats.marketCap_percentage}`}
+            %
           </span>
         </div>
         <div className="stats-item">
@@ -52,12 +65,12 @@ export default function Header() {
           <span className="stats-value">${formatNumber(stats.volume)}</span>
         </div>
         <div className="stats-item">
-          Dominance:
+          <span className="stats-label">Dominance:</span>
           <span className="stats-label">BTC</span>
-          <span className="stats-value"> {stats.dominance_btc}%</span>
+          <span className="stats-value">{stats.dominance_btc}%</span>
           &nbsp;
           <span className="stats-label">ETH</span>
-          <span className="stats-value"> {stats.dominance_eth}%</span>
+          <span className="stats-value">{stats.dominance_eth}%</span>
         </div>
       </div>
       <nav className="header-nav">
