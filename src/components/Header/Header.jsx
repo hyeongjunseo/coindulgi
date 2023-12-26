@@ -62,7 +62,7 @@ export default function Header() {
           >
             {marketCap_percentage >= 0
               ? `+${marketCap_percentage}`
-              : `-${marketCap_percentage}`}
+              : `${marketCap_percentage}`}
             %
           </span>
         </div>

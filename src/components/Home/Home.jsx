@@ -5,30 +5,28 @@ import "../../styles/global.scss";
 import "./Home.scss";
 
 export default function Home() {
+  const quotes = [
+    "🐋 Ride or dodge the whale's wave",
+    "👋 If there's doubt, stay out",
+    "🤷‍♀️ The market doesn't care about your profits",
+    "🧘 If you are not patient, trading is not your thing",
+    "🐄 Milk it while it's available",
+    "💵 6 + 6 is larger than 10 - 7",
+  ];
+
   return (
     <div className="page-container">
       <Header />
       <section className="section-quote">
         <h2 className="section-quote-title">FOLLOW OR BURNT</h2>
         <main className="section-quote-quotes">
-          <blockquote>
-            <p>🐋 Ride or dodge the whale's wave</p>
-          </blockquote>
-          <blockquote>
-            <p>👋 If there's doubt, stay out</p>
-          </blockquote>
-          <blockquote>
-            <p>🤷‍♀️ The market doesn't care about your profits</p>
-          </blockquote>
-          <blockquote>
-            <p>🧘 If you are not patient, trading is not your thing</p>
-          </blockquote>
-          <blockquote>
-            <p>🐄 Milk it while it's available</p>
-          </blockquote>
-          <blockquote>
-            <p>💵 6 + 6 is larger than 10 - 7</p>
-          </blockquote>
+          {quotes.map((quote, i) => {
+            return (
+              <blockquote key={i}>
+                <p>{quote}</p>
+              </blockquote>
+            );
+          })}
         </main>
       </section>
     </div>
