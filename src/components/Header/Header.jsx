@@ -113,7 +113,12 @@ export default function Header() {
         </ul>
         <ul className="nav-external">
           <li className="nav-item-external">
-            <Link className="external-link" to="https://www.binance.com/en">
+            <Link
+              className="external-link"
+              to="https://www.binance.com/en"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <img
                 className="external-logo"
                 src="/binance.png"
@@ -122,7 +127,12 @@ export default function Header() {
             </Link>
           </li>
           <li className="nav-item-external">
-            <Link className="external-link" to="https://www.tradingview.com/">
+            <Link
+              className="external-link"
+              to="https://www.tradingview.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <svg
                 className="external-logo"
                 viewBox="0 0 36 28"
