@@ -3,14 +3,15 @@
   src: url(../../assets/fonts/PixelOperator-Bold.ttf);
 }
 @import url("https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap");
+@import "../../styles/global.scss";
 
 .header {
   font-family: "pixelOperator";
-  background-color: #ffffff;
+  background-color: $color-section-bg;
   font-size: 24px;
   line-height: 36px;
   margin: 0 0 50px 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $color-border;
 }
 
 .header-stats {
@@ -19,7 +20,7 @@
   display: flex;
   justify-content: flex-start;
   padding: 2px 24px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $color-border;
   .stats-item {
     margin-right: 20px;
     .stats-label {
@@ -55,17 +56,20 @@
     transition: all 0.3s ease;
 
     &:hover {
-      color: #babdc0;
-      border-bottom: 2px solid #babdc0;
+      color: $color-component;
+      border-bottom: 2px solid $color-component;
     }
   }
 }
 
 .nav-logo-link {
   display: flex;
-  img {
+  .nav-logo {
     width: 50px;
     height: 50px;
+  }
+  &:hover {
+    border-bottom: none !important;
   }
 }
 

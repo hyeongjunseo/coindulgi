@@ -2,23 +2,29 @@
   font-family: "pixelOperator";
   src: url(../../assets/fonts/PixelOperator-Bold.ttf);
 }
+@import "../../styles/global.scss";
 
 .section-quote {
+  margin-bottom: 80px;
   .section-quote-title {
     font-family: "pixelOperator";
-    color: #181a1c;
+    font-size: 50px;
+    color: $color-title;
     text-align: center;
-    font-size: 60px;
   }
   .section-quote-quotes {
-    margin-top: 55px;
-    font-size: 20px;
+    width: 700px;
+    border: 1px solid $color-border;
+    background-color: $color-section-bg;
+    margin: 40px auto 0 auto;
+    padding: 55px 35px 35px 35px;
+    font-size: 18px;
     blockquote {
-      width: 65%;
+      width: 90%;
       margin: 0 auto;
       margin-bottom: 30px;
       padding-bottom: 20px;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid $color-border;
     }
   }
 }

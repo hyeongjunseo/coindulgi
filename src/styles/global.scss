@@ -14,11 +14,12 @@ $color-body-bg: #f9f9f9;
 $color-section-bg: #ffffff;
 $color-component: #555e68;
 $color-part: #eff2f5;
+$color-subpart: #f0f4f8;
 
 body {
   font-family: "Cousine", monospace;
-  color: #32383d;
-  background-color: #f9f9f9;
+  color: $color-text;
+  background-color: $color-body-bg;
 }
 
 .page-container {
@@ -28,10 +29,10 @@ body {
 }
 
 a {
-  color: #32383d;
+  color: $color-text;
   text-decoration: none;
 }
 
 a:visited {
-  color: #32383d;
+  color: $color-text;
 }
