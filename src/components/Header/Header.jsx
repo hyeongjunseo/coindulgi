@@ -8,10 +8,16 @@ import "./Header.scss";
 
 export default function Header() {
   const dispatch = useDispatch();
-  const stats = useSelector((state) => {
-    return state.stats.data;
-  });
-  console.log(stats);
+  const {
+    coins,
+    exchanges,
+    marketCap,
+    marketCap_percentage,
+    volume,
+    dominance_btc,
+    dominance_eth,
+  } = useSelector((state) => state.stats.data);
+
   const formatNumber = (num) => {
     if (!num) return "---";
     if (num >= 1e12) {
@@ -41,36 +47,36 @@ export default function Header() {
       <div className="header-stats">
         <div className="stats-item">
           <span className="stats-label">Coins:</span>
-          <span className="stats-value">{stats.coins}</span>
+          <span className="stats-value">{coins}</span>
         </div>
         <div className="stats-item">
           Exchanges:
-          <span className="stats-value">{stats.exchanges}</span>
+          <span className="stats-value">{exchanges}</span>
         </div>
         <div className="stats-item">
           <span className="stats-label">Market Cap:</span>
-          <span className="stats-value">${formatNumber(stats.marketCap)}</span>
+          <span className="stats-value">${formatNumber(marketCap)}</span>
           <span
             className="stats-value-percentage"
-            style={getPercentageStyle(stats.marketCap_percentage)}
+            style={getPercentageStyle(marketCap_percentage)}
           >
-            {stats.marketCap_percentage >= 0
-              ? `+${stats.marketCap_percentage}`
-              : `-${stats.marketCap_percentage}`}
+            {marketCap_percentage >= 0
+              ? `+${marketCap_percentage}`
+              : `-${marketCap_percentage}`}
             %
           </span>
         </div>
         <div className="stats-item">
           <span className="stats-label">24h Vol:</span>
-          <span className="stats-value">${formatNumber(stats.volume)}</span>
+          <span className="stats-value">${formatNumber(volume)}</span>
         </div>
         <div className="stats-item">
           <span className="stats-label">Dominance:</span>
           <span className="stats-label">BTC</span>
-          <span className="stats-value">{stats.dominance_btc}%</span>
+          <span className="stats-value">{dominance_btc}%</span>
           &nbsp;
           <span className="stats-label">ETH</span>
-          <span className="stats-value">{stats.dominance_eth}%</span>
+          <span className="stats-value">{dominance_eth}%</span>
         </div>
       </div>
       <nav className="header-nav">
