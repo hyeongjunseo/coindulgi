@@ -54,7 +54,7 @@ export const searchCoins = createAsyncThunk(
     return res.data.coins.map((coin) => ({
       id: coin.id,
       name: coin.name,
-      image: coin.thumb,
+      image: coin.large,
     }));
   }
 );

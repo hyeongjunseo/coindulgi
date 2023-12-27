@@ -22,6 +22,11 @@ body {
   background-color: $color-body-bg;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 .page-container {
   max-width: 1000px;
   margin: 0 auto;
