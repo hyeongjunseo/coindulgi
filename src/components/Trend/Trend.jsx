@@ -52,14 +52,6 @@ export default function Trend() {
                       </div>
                       <div className="trend-item-name">{coin.name}</div>
                     </div>
-                    <div className="trend-item-pricing">
-                      <div className="trend-item-btc">
-                        <span></span>
-                      </div>
-                      <div className="trend-item-usd">
-                        <span></span>
-                      </div>
-                    </div>
                   </div>
                 </Link>
               ))
@@ -74,6 +66,7 @@ export default function Trend() {
                     </div>
                     <div className="trend-item-pricing">
                       <div className="trend-item-btc">
+                        <img src="/bitcoin.webp" alt="bitcoin" />
                         <span>{coin.price_btc} BTC</span>
                       </div>
                       <div className="trend-item-usd">

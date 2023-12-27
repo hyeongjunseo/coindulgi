@@ -2,9 +2,10 @@
   font-family: "pixelOperator";
   src: url(../../assets/fonts/PixelOperator-Bold.ttf);
 }
+@import "../../styles/global.scss";
 
 .trend-section {
-  width: 80%;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -14,12 +15,12 @@
   display: block;
   padding: 15px 20px;
   margin: 0px auto;
-  margin-bottom: 35px;
+  margin-bottom: 45px;
   width: 65%;
-  border: 2px solid rgba(25, 32, 46, 0.4);
+  border: 2px solid $color-component;
 
   &:focus {
-    border-color: #f0b90a;
+    border-color: $color-text;
     outline: none;
 
     &::placeholder {
@@ -27,14 +28,21 @@
     }
   }
   &::placeholder {
-    color: #9ca3af;
+    color: $color-component;
   }
 }
 
 .trend-title {
-  color: #181a1c;
+  color: $color-title;
   text-align: center;
   font-size: 40px;
+  margin-bottom: 35px;
+}
+
+.trend-list {
+  background-color: $color-section-bg;
+  border: 1px solid $color-border;
+  padding: 40px 35px 20px 35px;
   margin-bottom: 40px;
 }
 
@@ -43,7 +51,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid #babdc0;
+  border-bottom: 1px solid $color-border;
   padding: 0 40px 20px 40px;
 
   .trend-item-info {
@@ -68,9 +76,16 @@
     align-items: flex-end;
     .trend-item-btc {
       font-size: 16px;
+      img {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin: -3px 6px 0 0;
+        vertical-align: middle;
+      }
     }
     .trend-item-usd {
-      margin-top: 5px;
+      margin-top: 6px;
       font-size: 14px;
     }
   }
