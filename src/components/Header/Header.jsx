@@ -8,18 +8,25 @@ import "./Header.scss";
 
 export default function Header() {
   const dispatch = useDispatch();
+  const { data, error, isLoading } = useSelector((state) => state.stats);
+
+  // Check if data is loading or there is an error
+  const shouldShowPlaceholder = isLoading || error;
+
   const {
-    coins,
-    exchanges,
-    marketCap,
-    marketCap_percentage,
-    volume,
-    dominance_btc,
-    dominance_eth,
-  } = useSelector((state) => state.stats.data);
+    coins = "---",
+    exchanges = "---",
+    marketCap = "---",
+    marketCap_percentage = "---",
+    volume = "---",
+    dominance_btc = "---",
+    dominance_eth = "---",
+  } = shouldShowPlaceholder ? {} : data;
 
   const formatNumber = (num) => {
-    if (!num) return "---";
+    if (typeof num !== "number") {
+      return "---";
+    }
     if (num >= 1e12) {
       return (num / 1e12).toFixed(3) + "T";
     } else if (num >= 1e9) {
@@ -30,7 +37,11 @@ export default function Header() {
       return num.toFixed(3);
     }
   };
+
   const getPercentageStyle = (percentage) => {
+    if (typeof percentage !== "number") {
+      return { color: "#6088ff" };
+    }
     if (percentage >= 0) {
       return { color: "#22AB94" };
     } else {

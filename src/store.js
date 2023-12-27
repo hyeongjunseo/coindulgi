@@ -100,17 +100,21 @@ const statSlice = createSlice({
   initialState: {
     data: {},
     error: null,
+    isLoading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchStats.pending, (state, action) => {
+      state.isLoading = true;
       state.error = null;
     });
     builder.addCase(fetchStats.fulfilled, (state, action) => {
+      state.isLoading = false;
       state.data = action.payload;
     });
     builder.addCase(fetchStats.rejected, (state, action) => {
-      state.error = action.error.message;
+      state.isLoading = false;
+      state.error = true; // Flag to indicate error
     });
   },
 });
