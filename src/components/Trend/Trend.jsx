@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
+import debounce from "lodash.debounce";
 
 import { fetchCoins, searchCoins } from "../../store";
 
@@ -25,6 +26,22 @@ export default function Trend() {
     dispatch(fetchCoins());
   }, [dispatch]);
 
+  // Debounce the setQuery call
+  const debouncedSetQuery = debounce((searchQuery) => {
+    setQuery(searchQuery);
+  }, 500);
+
+  // Trigger search when query changes
+  useEffect(() => {
+    if (query) {
+      dispatch(searchCoins(query));
+    }
+  }, [query, dispatch]);
+
+  const handleSearchChange = (e) => {
+    debouncedSetQuery(e.target.value);
+  };
+
   return (
     <div className="page-container">
       <PageHead title="Top Trending Cryptocurrencies Today" />
@@ -34,11 +51,7 @@ export default function Trend() {
           className="trend-search"
           type="text"
           placeholder="Search a coin"
-          onChange={(e) => {
-            const currentQuery = e.target.value;
-            setQuery(currentQuery);
-            dispatch(searchCoins(currentQuery));
-          }}
+          onChange={handleSearchChange}
         />
         {query.length > 1 ? (
           <h1 className="trend-title">🔎 {query}</h1>
