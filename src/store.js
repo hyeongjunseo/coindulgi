@@ -5,8 +5,6 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk for fetching coins
-
 export const fetchStats = createAsyncThunk("stats/fetchStats", async () => {
   const res = await axios.get("https://api.coingecko.com/api/v3/global");
   console.log(res);
@@ -96,8 +94,6 @@ export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
     image: article.urlToImage,
   }));
 });
-
-//slice for managing coins state
 
 const statSlice = createSlice({
   name: "stats",
@@ -199,7 +195,6 @@ const newsSlice = createSlice({
   },
 });
 
-//configure and export the store
 export default configureStore({
   reducer: {
     stats: statSlice.reducer,

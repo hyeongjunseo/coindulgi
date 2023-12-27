@@ -40,7 +40,11 @@ export default function Trend() {
             dispatch(searchCoins(currentQuery));
           }}
         />
-        <h1 className="trend-title">TOP-15</h1>
+        {query.length > 1 ? (
+          <h1 className="trend-title">🔎 {query}</h1>
+        ) : (
+          <h1 className="trend-title">🔥 Trending</h1>
+        )}
         <div className="trend-list">
           {query.length > 1
             ? searchedCoins.map((coin) => (
