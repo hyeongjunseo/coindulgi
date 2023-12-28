@@ -4,9 +4,26 @@
 }
 @import "../../styles/global.scss";
 
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .trend-section {
+  position: relative;
   max-width: 800px;
   margin: 0 auto;
+
+  .spinner {
+    position: absolute;
+    top: 18px;
+    right: 165px;
+    animation: 2s rotating infinite linear;
+  }
 }
 
 .trend-search {

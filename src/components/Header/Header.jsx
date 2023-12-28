@@ -39,7 +39,7 @@ export default function Header() {
   };
 
   const getPercentageStyle = (percentage) => {
-    if (typeof percentage !== "number") {
+    if (percentage === "---") {
       return { color: "#6088ff" };
     }
     if (percentage >= 0) {

@@ -144,14 +144,17 @@ const searchCoinSlice = createSlice({
   initialState: {
     data: [],
     error: null,
+    isLoading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchCoins.pending, (state, action) => {
       state.error = null;
+      state.isLoading = true;
     });
     builder.addCase(searchCoins.fulfilled, (state, action) => {
       state.data = action.payload;
+      state.isLoading = false;
     });
     builder.addCase(searchCoins.rejected, (state, action) => {
       state.error = action.error.message;
