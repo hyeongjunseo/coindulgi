@@ -66,10 +66,16 @@ export const fetchChartData = createAsyncThunk(
       `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=max`
     );
     console.log(res.data);
-    return res.data.prices.map((p) => ({
-      timestamp: new Date(p[0]).toLocaleDateString("en-US"),
-      price: p[1],
-    }));
+    return res.data.prices.map((p) => {
+      const date = new Date(p[0]);
+      const formattedDate = `${String(date.getFullYear()).substr(2)}/${String(
+        date.getMonth() + 1
+      ).padStart(2, "0")}`;
+      return {
+        timestamp: formattedDate,
+        price: p[1],
+      };
+    });
   }
 );
 

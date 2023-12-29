@@ -52,7 +52,7 @@ export default function Show() {
             margin={{
               top: 10,
               right: 30,
-              left: 0,
+              left: 20,
               bottom: 0,
             }}
           >
@@ -63,8 +63,8 @@ export default function Show() {
             <Area
               type="monotone"
               dataKey="price"
-              stroke="#3E1C04"
-              fill="#FBE84F"
+              stroke="#181a1c"
+              fill="#555e68"
             />
           </AreaChart>
         </ResponsiveContainer>

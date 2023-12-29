@@ -3,14 +3,20 @@
   src: url(../../../assets/fonts/PixelOperator-Bold.ttf);
 }
 
+@import "../../../styles/global.scss";
+
 .chart-container {
   height: 400px;
+  font-size: 12px;
 }
 
 .detail-title {
-  font-size: 25px;
+  font-family: "pixelOperator";
+  color: $color-title;
+  font-size: 35px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-top: -10px;
+  margin-bottom: 35px;
 }
 
 .responsiveContainer {
