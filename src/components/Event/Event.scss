@@ -40,23 +40,22 @@
 .event-sidebar {
   width: 150px;
   height: 100%;
+  font-family: "pixelOperator";
   position: sticky;
   top: 40px;
-  border: 2px dashed #2e3747;
-  padding: 18px 16px;
+  border: 2px dashed $color-component;
+  font-size: 22px;
+  padding: 10px 14px;
   margin-left: 40px;
+  margin-right: 20px;
   ul {
-    margin-top: 16px;
+    margin-top: 20px;
     list-style: none;
     text-align: center;
     li {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
   }
-}
-
-.hidden-sidebar {
-  display: none;
 }
 
 .event-list {
@@ -67,7 +66,7 @@
 .event-section {
   padding-bottom: 40px;
   margin-bottom: 40px;
-  border-bottom: 4px dotted $color-component;
+  border-bottom: 4px dashed $color-component;
 }
 
 .event-section-header {
@@ -86,4 +85,20 @@
     font-size: 23px;
     margin-bottom: 15px;
   }
+}
+
+.up-btn {
+  position: fixed;
+  opacity: 0;
+  bottom: 60px;
+  right: 140px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  svg {
+    fill: $color-component;
+  }
+}
+
+.show {
+  opacity: 1;
 }

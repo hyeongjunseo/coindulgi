@@ -13,6 +13,7 @@ export default function Event() {
     minutes: 0,
     seconds: 0,
   });
+  const [showUpButton, setShowUpButton] = useState(false);
 
   const events = [
     {
@@ -23,8 +24,8 @@ export default function Event() {
           description: "Spot BTC ETF approvals ranges between January 5 and 10",
         },
         {
-          title: "Another Event",
-          description: "Description of another event",
+          title: "Manta Pacific Mainnet",
+          description: "Deposit tokens and earn Manta token rewards",
         },
       ],
     },
@@ -32,8 +33,8 @@ export default function Event() {
       month: "Feb 2024",
       events: [
         {
-          title: "Spot BTC ETF",
-          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+          title: "Another Event",
+          description: "Description of another event",
         },
         {
           title: "Another Event",
@@ -45,9 +46,10 @@ export default function Event() {
       month: "Mar 2024",
       events: [
         {
-          title: "Spot BTC ETF",
-          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+          title: "Another Event",
+          description: "Description of another event",
         },
+        ,
         {
           title: "Another Event",
           description: "Description of another event",
@@ -61,14 +63,18 @@ export default function Event() {
           title: "Bitcoin halving",
           description: "The next BTC halving is likely to occur",
         },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
       ],
     },
     {
       month: "May 2024",
       events: [
         {
-          title: "Spot BTC ETF",
-          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+          title: "Another Event",
+          description: "Description of another event",
         },
         {
           title: "Another Event",
@@ -80,8 +86,86 @@ export default function Event() {
       month: "Jun 2024",
       events: [
         {
-          title: "Spot BTC ETF",
-          description: "Spot BTC ETF approvals ranges between January 5 and 10",
+          title: "Another Event",
+          description: "Description of another event",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Jul 2024",
+      events: [
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Aug 2024",
+      events: [
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Sep 2024",
+      events: [
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Oct 2024",
+      events: [
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Nov 2024",
+      events: [
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+        {
+          title: "Another Event",
+          description: "Description of another event",
+        },
+      ],
+    },
+    {
+      month: "Dec 2024",
+      events: [
+        {
+          title: "Another Event",
+          description: "Description of another event",
         },
         {
           title: "Another Event",
@@ -123,6 +207,21 @@ export default function Event() {
     };
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      const scrollY = window.scrollY;
+      if (scrollY > 300) {
+        setShowUpButton(true);
+        const upButton = document.querySelector(".up-btn");
+        if (upButton) {
+          upButton.classList.add("show");
+        }
+      } else {
+        setShowUpButton(false);
+      }
+    });
+  }, []);
+
   return (
     <div className="page-container">
       <PageHead title="Cryptocurrency Events Calendar - Stay Informed About Crypto" />
@@ -149,7 +248,7 @@ export default function Event() {
         </div>
       </div>
       <div className="event-content">
-        <div className="event-sidebar hidden-sidebar">
+        <div className="event-sidebar">
           <ul>
             {events.map((eventMonth) => (
               <li key={eventMonth.month}>
@@ -180,6 +279,23 @@ export default function Event() {
           ))}
         </div>
       </div>
+      {showUpButton && (
+        <div
+          className="up-btn"
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            width="40"
+            viewBox="0 0 512 512"
+          >
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM135.1 217.4l107.1-99.9c3.8-3.5 8.7-5.5 13.8-5.5s10.1 2 13.8 5.5l107.1 99.9c4.5 4.2 7.1 10.1 7.1 16.3c0 12.3-10 22.3-22.3 22.3H304v96c0 17.7-14.3 32-32 32H240c-17.7 0-32-14.3-32-32V256H150.3C138 256 128 246 128 233.7c0-6.2 2.6-12.1 7.1-16.3z" />
+          </svg>
+        </div>
+      )}
     </div>
   );
 }
