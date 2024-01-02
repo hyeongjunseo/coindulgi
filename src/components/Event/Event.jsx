@@ -149,7 +149,7 @@ export default function Event() {
         </div>
       </div>
       <div className="event-content">
-        <div className="event-sidebar">
+        <div className="event-sidebar hidden-sidebar">
           <ul>
             {events.map((eventMonth) => (
               <li key={eventMonth.month}>

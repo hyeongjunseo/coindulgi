@@ -2,10 +2,11 @@
   font-family: "pixelOperator";
   src: url(../../assets/fonts/PixelOperator-Bold.ttf);
 }
+@import "../../styles/global.scss";
 
 .event-header {
   width: 400px;
-  background-color: #2e3747;
+  background-color: #555e68;
   color: white;
   padding: 15px 30px;
   margin: 0 auto;
@@ -52,6 +53,10 @@
       margin-bottom: 16px;
     }
   }
+}
+
+.hidden-sidebar {
+  display: none;
 }
 
 .event-list {
