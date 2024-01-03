@@ -59,3 +59,19 @@
   margin: 20px auto 80px auto;
   padding: 10px 20px 10px 20px;
 }
+
+.up-btn {
+  position: fixed;
+  opacity: 0;
+  bottom: 60px;
+  right: 140px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  svg {
+    fill: $color-component;
+  }
+}
+
+.show {
+  opacity: 1;
+}
