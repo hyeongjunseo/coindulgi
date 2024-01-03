@@ -39,15 +39,15 @@ export default function News() {
               </div>
             </Link>
           ))}
-          {visibleArticles < articles.length && (
-            <button
-              className="btn-load-more"
-              onClick={() => setVisibleArticles(visibleArticles + 5)}
-            >
-              <p>Load More</p>
-            </button>
-          )}
         </div>
+        {visibleArticles < articles.length && (
+          <button
+            className="btn-load-more"
+            onClick={() => setVisibleArticles(visibleArticles + 5)}
+          >
+            <p>Load More</p>
+          </button>
+        )}
       </div>
     </div>
   );
