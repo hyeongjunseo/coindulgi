@@ -35,7 +35,11 @@ export default function News() {
               </div>
               <div className="article-content">
                 <div className="article-title">{article.title}</div>
-                <div className="article-description">{article.description}</div>
+                <div className="article-description">
+                  {article.description.length > 130
+                    ? `${article.description.substring(0, 120)}...`
+                    : article.description}
+                </div>
               </div>
             </Link>
           ))}
