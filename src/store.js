@@ -93,7 +93,13 @@ export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
     `https://newsapi.org/v2/everything?q=cryptocurrency&from=${formattedDate}&sortBy=popularity&apiKey=185b683ecedc46ea958c0b39242e7fb6`
   );
   console.log(res.data);
-  return res.data.articles.map((article) => ({
+
+  // Filter articles to include only those with images
+  const articlesWithImages = res.data.articles.filter(
+    (article) => article.urlToImage
+  );
+
+  return articlesWithImages.map((article) => ({
     title: article.title,
     description: article.description,
     url: article.url,

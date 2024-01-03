@@ -31,7 +31,7 @@ export default function News() {
           {articles.slice(0, visibleArticles).map((article, i) => (
             <Link to={article.url} key={i} className="news-item">
               <div className="article-image">
-                <img src={article.image} alt={article.title} />
+                <img loading="lazy" src={article.image} alt={article.title} />
               </div>
               <div className="article-content">
                 <div className="article-title">{article.title}</div>
