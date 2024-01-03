@@ -2,6 +2,7 @@
   font-family: "pixelOperator";
   src: url(../../assets/fonts/PixelOperator-Bold.ttf);
 }
+@import "../../styles/global.scss";
 
 .calc-container {
   width: 80%;
@@ -28,12 +29,26 @@
     width: 85%;
     font-size: 20px;
     padding: 16px 10px;
-    border: 2px solid rgba(25, 32, 46, 0.4);
+    border: 2px solid $color-component;
 
     &::placeholder {
       color: #9ca3af;
     }
   }
+  input:focus {
+    outline: none;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+  appearance: none; /* Standard property */
 }
 
 .calc-btn {
@@ -41,7 +56,7 @@
   font-family: "pixelOperator";
   color: white;
   font-size: 28px;
-  background-color: #2e3747;
+  background-color: $color-component;
   border: none;
   margin: 20px auto 40px auto;
   padding: 10px 20px 10px 20px;
@@ -52,7 +67,7 @@
   padding: 5px 10px;
   span {
     font-size: 18px;
-    border-bottom: 1px dotted #2e3747;
+    border-bottom: 1px dotted $color-component;
     display: inline-block;
     margin-bottom: 13px;
   }
