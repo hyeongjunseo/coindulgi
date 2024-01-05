@@ -54,7 +54,10 @@ export default function News() {
             className="news-select"
             name=""
             id=""
-            onChange={(e) => setSelectedCoin(e.target.value)}
+            onChange={(e) => {
+              setSelectedCoin(e.target.value);
+              setVisibleArticles(5);
+            }}
           >
             <option value="All Coins">All Coins</option>
             <option value="Bitcoin">Bitcoin</option>
