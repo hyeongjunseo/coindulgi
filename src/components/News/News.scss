@@ -17,10 +17,15 @@
 }
 
 .news-header {
+  display: flex;
+  justify-content: space-between;
   font-family: "pixelOperator";
   color: $color-title;
   font-size: 30px;
   margin-bottom: 30px;
+}
+
+.news-select {
 }
 
 .news-item {

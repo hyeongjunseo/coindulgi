@@ -11,6 +11,7 @@ import PageHead from "../shared/PageHead";
 
 export default function News() {
   const dispatch = useDispatch();
+  const [selectedCoin, setSelectedCoin] = useState("All Coins");
   const articles = useSelector((state) => state.news.articles);
   console.log(articles);
   const [visibleArticles, setVisibleArticles] = useState(5);
@@ -43,6 +44,18 @@ export default function News() {
       <div className="width news-width">
         <header className="news-header">
           <h2>News</h2>
+          <select
+            className="news-select"
+            name=""
+            id=""
+            onClick={(e) => setSelectedCoin(e.target.value)}
+          >
+            <option value="All Coins">All Coins</option>
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="Solana">Solana</option>
+            <option value="Chainlink">Chainlink</option>
+          </select>
         </header>
         {isLoading ? (
           <svg
