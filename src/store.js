@@ -136,17 +136,21 @@ const coinSlice = createSlice({
   initialState: {
     data: [],
     error: null,
+    isCoinsLoading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCoins.pending, (state, action) => {
       state.error = null;
+      state.isCoinsLoading = true;
     });
     builder.addCase(fetchCoins.fulfilled, (state, action) => {
       state.data = action.payload;
+      state.isCoinsLoading = false;
     });
     builder.addCase(fetchCoins.rejected, (state, action) => {
       state.error = action.error.message;
+      state.isCoinsLoading = true;
     });
   },
 });
@@ -156,20 +160,21 @@ const searchCoinSlice = createSlice({
   initialState: {
     data: [],
     error: null,
-    isLoading: false,
+    isSearchLoading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchCoins.pending, (state, action) => {
       state.error = null;
-      state.isLoading = true;
+      state.isSearchLoading = true;
     });
     builder.addCase(searchCoins.fulfilled, (state, action) => {
       state.data = action.payload;
-      state.isLoading = false;
+      state.isSearchLoading = false;
     });
     builder.addCase(searchCoins.rejected, (state, action) => {
       state.error = action.error.message;
+      state.isSearchLoading = false;
     });
   },
 });

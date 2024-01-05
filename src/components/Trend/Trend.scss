@@ -18,10 +18,17 @@
   max-width: 800px;
   margin: 0 auto;
 
-  .spinner {
+  .search-spinner {
     position: absolute;
     top: 18px;
     right: 165px;
+    animation: 2s rotating infinite linear;
+  }
+
+  .coins-spinner {
+    position: absolute;
+    top: 230px;
+    right: 360px;
     animation: 2s rotating infinite linear;
   }
 }

@@ -19,8 +19,13 @@ export default function Trend() {
     return state.searchCoins.data;
   });
   console.log(coins);
-  const { isLoading } = useSelector((state) => {
+
+  const { isSearchLoading } = useSelector((state) => {
     return state.searchCoins;
+  });
+
+  const { isCoinsLoading } = useSelector((state) => {
+    return state.coins;
   });
 
   const [query, setQuery] = useState("");
@@ -57,9 +62,9 @@ export default function Trend() {
           onChange={handleSearchChange}
         />
 
-        {isLoading && (
+        {isSearchLoading && (
           <svg
-            className="spinner"
+            className="search-spinner"
             xmlns="http://www.w3.org/2000/svg"
             height="16"
             width="16"
@@ -74,42 +79,55 @@ export default function Trend() {
         ) : (
           <h1 className="trend-title">🔥 Trending</h1>
         )}
-        <div className="trend-list">
-          {query.length > 1
-            ? searchedCoins.map((coin) => (
-                <Link key={coin.id} to={`/coins/${coin.id}`}>
-                  <div className="trend-item">
-                    <div className="trend-item-info">
-                      <div className="trend-item-img">
-                        <img src={coin.image} alt={coin.id} />
-                      </div>
-                      <div className="trend-item-name">{coin.name}</div>
-                    </div>
-                  </div>
-                </Link>
-              ))
-            : coins.map((coin) => (
-                <Link key={coin.id} to={`/coins/${coin.id}`}>
-                  <div className="trend-item">
-                    <div className="trend-item-info">
-                      <div className="trend-item-img">
-                        <img src={coin.image} alt={coin.id} />
-                      </div>
-                      <div className="trend-item-name">{coin.name}</div>
-                    </div>
-                    <div className="trend-item-pricing">
-                      <div className="trend-item-btc">
-                        <img src="/bitcoin.webp" alt="bitcoin" />
-                        <span>{coin.price_btc} BTC</span>
-                      </div>
-                      <div className="trend-item-usd">
-                        <span>(${coin.price_usd})</span>
+
+        {isCoinsLoading ? (
+          <svg
+            className="coins-spinner"
+            xmlns="http://www.w3.org/2000/svg"
+            height="50"
+            width="50"
+            viewBox="0 0 512 512"
+          >
+            <path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z" />
+          </svg>
+        ) : (
+          <div className="trend-list">
+            {query.length > 1
+              ? searchedCoins.map((coin) => (
+                  <Link key={coin.id} to={`/coins/${coin.id}`}>
+                    <div className="trend-item">
+                      <div className="trend-item-info">
+                        <div className="trend-item-img">
+                          <img src={coin.image} alt={coin.id} />
+                        </div>
+                        <div className="trend-item-name">{coin.name}</div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-        </div>
+                  </Link>
+                ))
+              : coins.map((coin) => (
+                  <Link key={coin.id} to={`/coins/${coin.id}`}>
+                    <div className="trend-item">
+                      <div className="trend-item-info">
+                        <div className="trend-item-img">
+                          <img src={coin.image} alt={coin.id} />
+                        </div>
+                        <div className="trend-item-name">{coin.name}</div>
+                      </div>
+                      <div className="trend-item-pricing">
+                        <div className="trend-item-btc">
+                          <img src="/bitcoin.webp" alt="bitcoin" />
+                          <span>{coin.price_btc} BTC</span>
+                        </div>
+                        <div className="trend-item-usd">
+                          <span>(${coin.price_usd})</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+          </div>
+        )}
       </section>
     </div>
   );
