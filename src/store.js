@@ -204,17 +204,21 @@ const newsSlice = createSlice({
   initialState: {
     articles: [],
     error: null,
+    isLoading: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchNews.pending, (state, action) => {
       state.error = null;
+      state.isLoading = true;
     });
     builder.addCase(fetchNews.fulfilled, (state, action) => {
       state.articles = action.payload;
+      state.isLoading = false;
     });
     builder.addCase(fetchNews.rejected, (state, action) => {
       state.error = action.error.message;
+      state.isLoading = false;
     });
   },
 });
