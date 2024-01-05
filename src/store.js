@@ -79,33 +79,39 @@ export const fetchChartData = createAsyncThunk(
   }
 );
 
-export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
-  const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 2);
+export const fetchNews = createAsyncThunk(
+  "news/fetchNews",
 
-  const year = yesterday.getFullYear();
-  const month = String(yesterday.getMonth() + 1).padStart(2, "0");
-  const day = String(yesterday.getDate()).padStart(2, "0");
-  const formattedDate = `${year}-${month}-${day}`;
-  console.log(formattedDate);
-  const res = await axios.get(
-    `https://newsapi.org/v2/everything?q=cryptocurrency&from=${formattedDate}&sortBy=popularity&apiKey=185b683ecedc46ea958c0b39242e7fb6`
-  );
-  console.log(res.data);
+  async (keyword = "All Coins") => {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 2);
 
-  // Filter articles to include only those with images
-  const articlesWithImages = res.data.articles.filter(
-    (article) => article.urlToImage
-  );
+    const year = yesterday.getFullYear();
+    const month = String(yesterday.getMonth() + 1).padStart(2, "0");
+    const day = String(yesterday.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    console.log(formattedDate);
 
-  return articlesWithImages.map((article) => ({
-    title: article.title,
-    description: article.description,
-    url: article.url,
-    image: article.urlToImage,
-  }));
-});
+    const query = keyword === "All Coins" ? "cryptocurrency" : keyword;
+    const res = await axios.get(
+      `https://newsapi.org/v2/everything?q=${query}&pageSize=20&language=en&from=${formattedDate}&to=${formattedDate}&sortBy=popularity&apiKey=185b683ecedc46ea958c0b39242e7fb6`
+    );
+    console.log(res.data);
+
+    // Filter articles to include only those with images
+    const articlesWithImages = res.data.articles.filter(
+      (article) => article.urlToImage
+    );
+
+    return articlesWithImages.map((article) => ({
+      title: article.title,
+      description: article.description,
+      url: article.url,
+      image: article.urlToImage,
+    }));
+  }
+);
 
 const statSlice = createSlice({
   name: "stats",

@@ -18,9 +18,15 @@ export default function News() {
   const { isLoading } = useSelector((state) => state.news);
   const [showUpButton, setShowUpButton] = useState(false);
 
+  //initial dispatch
   useEffect(() => {
     dispatch(fetchNews());
   }, [dispatch]);
+
+  //when 'selectedCoin' state changes
+  useEffect(() => {
+    dispatch(fetchNews(selectedCoin));
+  }, [dispatch, selectedCoin]);
 
   useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -48,7 +54,7 @@ export default function News() {
             className="news-select"
             name=""
             id=""
-            onClick={(e) => setSelectedCoin(e.target.value)}
+            onChange={(e) => setSelectedCoin(e.target.value)}
           >
             <option value="All Coins">All Coins</option>
             <option value="Bitcoin">Bitcoin</option>
