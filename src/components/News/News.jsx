@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNews } from "../../store";
 import { Link } from "react-router-dom";
@@ -17,6 +17,14 @@ export default function News() {
   const [visibleArticles, setVisibleArticles] = useState(5);
   const { isLoading } = useSelector((state) => state.news);
   const [showUpButton, setShowUpButton] = useState(false);
+
+  // Add a state to manage the visibility of the options list
+  const [isOptionsVisible, setIsOptionsVisible] = useState(false);
+
+  // Function to toggle the visibility of the options list
+  const toggleOptionsList = () => {
+    setIsOptionsVisible(!isOptionsVisible);
+  };
 
   //initial dispatch
   useEffect(() => {
@@ -50,21 +58,70 @@ export default function News() {
       <div className="width news-width">
         <header className="news-header">
           <h2>News</h2>
-          <select
-            className="news-select"
-            name=""
-            id=""
-            onChange={(e) => {
-              setSelectedCoin(e.target.value);
-              setVisibleArticles(5);
-            }}
-          >
-            <option value="All Coins">All Coins</option>
-            <option value="Bitcoin">Bitcoin</option>
-            <option value="Ethereum">Ethereum</option>
-            <option value="Solana">Solana</option>
-            <option value="Chainlink">Chainlink</option>
-          </select>
+          <div className="news-search">
+            <div className="select-wrapper">
+              <div className="news-select" onClick={toggleOptionsList}>
+                <span>{selectedCoin}</span>
+                <div
+                  className={`news-option-list ${
+                    isOptionsVisible ? "show" : ""
+                  }`}
+                >
+                  <div
+                    onClick={() => {
+                      setSelectedCoin("All Coins");
+                      setVisibleArticles(5);
+                    }}
+                  >
+                    All Coins
+                  </div>
+                  <div
+                    onClick={() => {
+                      setSelectedCoin("Ethereum");
+                      setVisibleArticles(5);
+                    }}
+                  >
+                    Ethereum
+                  </div>
+                  <div
+                    onClick={() => {
+                      setSelectedCoin("Bitcoin");
+                      setVisibleArticles(5);
+                    }}
+                  >
+                    Bitcoin
+                  </div>
+                  <div
+                    onClick={() => {
+                      setSelectedCoin("Solana");
+                      setVisibleArticles(5);
+                    }}
+                  >
+                    Solana
+                  </div>
+                  <div
+                    onClick={() => {
+                      setSelectedCoin("Chainlink");
+                      setVisibleArticles(5);
+                    }}
+                  >
+                    Chainlink
+                  </div>
+                </div>
+              </div>
+              <svg
+                id="select-arrow"
+                className="select-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                height="16"
+                width="14"
+                viewBox="0 0 448 512"
+                fill="#555e68"
+              >
+                <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+              </svg>
+            </div>
+          </div>
         </header>
         {isLoading ? (
           <svg
