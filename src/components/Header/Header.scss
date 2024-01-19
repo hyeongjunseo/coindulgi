@@ -82,3 +82,32 @@
   width: 30px;
   display: block;
 }
+
+.mobile-menu-bar {
+  display: none;
+}
+
+.custom-size {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.mobile-nav.open {
+  display: block;
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    display: none;
+  }
+
+  .mobile-menu-bar {
+    display: block;
+    padding: 20px;
+  }
+}
