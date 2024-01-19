@@ -94,7 +94,31 @@
 }
 
 .mobile-nav {
+  font-family: "pixelOperator";
   display: none;
+  position: fixed;
+  top: 70px;
+  z-index: 100;
+
+  .mobile-nav-list {
+    list-style: none;
+    padding: 20px;
+    font-size: 32px;
+    line-height: 36px;
+    li {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.mobile-external {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  img {
+    margin-left: 5px;
+    margin-right: 15px;
+  }
 }
 
 .mobile-nav.open {
